@@ -62,7 +62,7 @@ class SparseValues:
         return new
 
     def to_dense_pileup(self, size):
-        if self.values.dtype == np.bool:
+        if self.values.dtype == bool:
             values = self.values.astype("int")
         else:
             values = self.values
@@ -71,7 +71,7 @@ class SparseValues:
         indices = self.indices[:diffs.size]
         pileup[indices] = diffs
         pileup = np.cumsum(pileup[:-1])
-        if self.values.dtype == np.bool:
+        if self.values.dtype == bool:
             pileup = pileup.astype("bool")
         return pileup
 
